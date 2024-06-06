@@ -1,0 +1,26 @@
+*{
+    font-family: Helvetica, Arial, sans-serif; 
+   
+}
+div{
+    background-color:yellowgreen;
+}
+small{
+    text-decoration-style: solid;
+}
+li{
+display: inline;
+padding: 30px;
+Margin:20px;
+text-align-last:auto;
+}
+h1{
+    font-size: xx-large;
+    text-align: center;
+}
+body{
+    background-color:yellow;
+}
+legend{
+    background-color:rgb(82, 194, 59);
+}

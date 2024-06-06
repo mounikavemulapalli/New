@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./index.css" type="text/css" rel="stylesheet">
+    <title>Registration Form</title>
+</head>
+<body>
+    <center>
+        <h1>Registration Form</h1>
+        <fieldset>
+         <legend>Registration Details</legend>
+                <form id="RegisterForm" onsubmit="submitHandler(event)">
+                <label>First Name:</label>
+                <input type="text" name="FirstName" placeholder="Enter First Name" onsubmit={submitHandler} /><br/>
+                <label>Last Name:</label>
+                <input type="text" name="LastName" placeholder="Enter Last Name" onsubmit={submitHandler}/><br/>
+                <label>Email:</label> 
+                <input type="email" name="email" placeholder="Enter Email" onsubmit={submitHandler} /><br/>
+                <button type="submit" id="submitButton" class="btn btn-success">Submit</button>
+            </form>
+        </fieldset>
+    </center>
+    <script>
+        console.log("Script loaded!");
+
+        function submitHandler(event)
+        {
+         event.preventDefault(); // Prevent form submission 
+            const firstName = document.querySelector('input[name="FirstName"]').value;
+            const lastName = document.querySelector('input[name="LastName"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+
+            // Prepare data object
+            const data = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email
+            };
+            // Your form submission handling logic goes here
+            fetch('https://test-ap1-88642-default-rtdb.firebaseio.com/data.json',
+  {
+    method:'POST',
+    body:JSON.stringify(data),
+    headers:
+    {
+      "Content-Type":"application/json;charset=UTF-8"
+    } 
+  }
+).then(res => alert('Data posted')).catch(err=>console.log(err))
+     }
+    </script> 
+    <div>
+        <a href='./Login.html' >Go to Login</a>
+    </div>
+</body>
+</html>

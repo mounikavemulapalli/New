@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./index.css" type="text/css" rel="stylesheet">
+    <title>Login Form</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <form onsubmit="submitHandler(event)">
+        <label>FirstName:</label>
+        <input type="text" id="name" name="name"/><br />
+        <label>Email:</label>
+        <input type="Email" id="email" name="email"/><br />
+        <input type="submit" value="login">
+    </form>
+    <script>
+function submitHandler(event)
+{
+    event.preventDefault();
+    const FirstName=document.getElementById("name").value;
+    const email=document.getElementById("email").value;
+    console.log("FirstName",FirstName);
+    console.log("email",email);
+   
+    const data={
+        FirstName: FirstName,
+        email : email
+    }
+    fetch('https://test-ap1-88642-default-rtdb.firebaseio.com/data.json',
+  {
+    method:'POST',
+    body:JSON.stringify(data),
+    headers:
+    {
+      "Content-Type":"application/json;charset=UTF-8"
+    } 
+  }
+).then(res => alert('Entered')).catch(err=>console.log(err))
+    
+    }
+                alert("Invalid details..!");
+
+    </script>
+
+<div>
+    <a href='./Home.html' >Home</a>
+</div>
+</body>
+</html>
